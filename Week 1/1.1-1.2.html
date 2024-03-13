@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Data Visualisation Exercise 1"/>
+    <meta name="keywords" content="HTML, CSS, JS"/>
+    <meta name="author" content="Gareth"/>
+    <title>Task 1.1 HTML and CSS Demo Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            color: blue; 
+        }
+        p {
+            line-height: 1.5;
+        }
+        li {
+            list-style-type: square;
+        }
+        #images {
+            text-align: center;
+        }
+        footer {
+            background-color: lightgrey;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        figure {
+            margin: 0;
+        }
+        figcaption {
+            font-style: italic;
+        }
+        .btn {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Data Visualisation</h1>
+    <h2>Pets and the Pandemic</h2>
+    <p>A report from Animal Medicines Australia (AMA) has found that many Australians took the opportunity to introduce a pet into their household during the pandemic...</p>
+    <ul>
+        <li>companionship</li>
+        <li>better mental health</li>
+        <li>joy and happiness.</li>
+    </ul>
+    <br>
+    <div id="images">
+        <button class="btn" onclick="changeImage('pet_ownership_in_australia_table.png', 'Fig 1. Comparison of Pet Ownership in 2019 and 2021.', 'Pet Graph')">Total</button>
+        <button class="btn" onclick="changeImage('DataVis1.1.png', 'Fig 2. Total Ownership of Pets in 2019 ', 'Pet Graph')">2019</button>
+        <button class="btn" onclick="changeImage('DataVis1.2.png', 'Fig 3. Total Ownership of Pets in 2021', 'Pet Graph')">2021</button>
+        <button class="btn" onclick="changeImage('DataVis1.3.png', 'Fig 4. Comparison of Pet Ownership in 2019 and 2021', 'Pet Graph')">Both</button>
+        <br>
+        <figure>
+            <a id="figure-link" href="https://animalmedicinesaustralia.org.au/wp-content/uploads/2021/08/AMAU005-PATP-Report21_v1.41_WEB.pdf">
+                <img id="figure-image" src="images/pet_ownership_in_australia_table.png" alt="Pet Graph" style="width:800px;height:500px;"/>
+            </a>
+            <figcaption id="figure-caption">Figure 1. Comparison of Pet Ownership in 2019 and 2021. Data Source: <a href="https://animalmedicinesaustralia.org.au/wp-content/uploads/2021/08/AMAU005-PATP-Report21_v1.41_WEB.pdf" target="_blank">Animal Medicines Australian Report</a></figcaption>
+        </figure>
+    </div>
+    <br>
+    <footer>COS30045 Data Visualisation</footer>
+    <script>
+        function changeImage(src, caption, alt) {
+            document.getElementById('figure-image').src = 'images/' + src;
+            document.getElementById('figure-image').alt = alt;
+            document.getElementById('figure-caption').innerHTML = caption;
+        }
+    </script>
+</body>
+</html>
