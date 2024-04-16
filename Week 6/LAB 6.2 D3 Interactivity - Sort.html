@@ -33,7 +33,9 @@
     <h1>The D3 Journey starts here...</h1>
     <button id="add" class="updateData">Add</button>
     <button id="remove" class="updateData">Remove</button>
-    
+    <button id="sortchart" class="updateData">Asscending</button>
+    <button id="descending" class="updateData">Descending</button>
+
     <div id="chart"></div>
     <script>
         var w = 500;
@@ -158,6 +160,47 @@
                 .attr("x", w)
                 .remove();
          });
+
+    var sort = function() {
+
+            svg.selectAll("rect")
+              .sort(function(a, b){
+                return d3.ascending(a, b);    
+            })
+            .transition()
+            .duration(1000)
+            .attr("x", function(d, i){
+                return xScale(i);
+            });
+            
+        };
+
+    var descending = function(){
+            svg.selectAll("rect")
+             .sort(function(a, b) {
+            return d3.descending(a, b);
+            })
+            .transition()
+            .duration(1000)
+            .attr("x", function(d, i) {
+                return xScale(i);
+      });
+    }
+
+
+    d3.select("#sortchart")
+        .on("click", function() {
+            sort();
+
+        });
+    
+    d3.select("#descending")
+        .on("click", function() {
+            descending();
+
+        });
+
+
 
     </script>
 
