@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Data Visualisation">
+    <meta name="keywords" content="HTML, CSS, D3"/>
+    <meta name="author" content="Gareth Hand">
+    
+    <title>LAB 8.1 D3 Scaling your Charts</title>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        .dot {
+            fill: slategrey;
+        }
+
+        .dot-label {
+            font-size: 12px;
+            fill: black;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h1>Europe map</h1>
+    
+    <script>
+    var w = 675;
+    var h = 500; 
+    
+    var projection = d3.geoMercator()
+                        .center([10, 50])  
+                        .translate([w / 2, h / 2])
+                        .scale(100);       
+
+    var path = d3.geoPath()
+                .projection(projection);
+
+    var svg = d3.select("body")
+                .append("svg")
+                .attr("width", w) 
+                .attr("height", h) 
+                .attr("fill", "grey"); 
+    
+    d3.json("world.geojson").then(function(json) {
+    svg.selectAll("path")
+        .data(json.features) 
+        .enter() 
+        .append("path") 
+        .attr("d", path); 
+});
+
+
+    </script>
+    <br>
+    <footer style="color:grey">COS30045 Data Visualisation<br>Gareth Hand</footer>
+</body>
+</html>
